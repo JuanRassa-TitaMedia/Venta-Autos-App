@@ -8,7 +8,7 @@
         <label>Filtrar por:</label>
       </div>
       <div class="col-md-4">
-        <input type="text"/>
+        <input type="text" [(ngModel)]="filtro" />
       </div>
     </div>
     <div class="row">
@@ -22,7 +22,9 @@
       <thead>
         <tr>
           <th>
-            <button class="btn btn- ">Imágenes</button>
+            <button class="btn btn-primary" (click)="toggleImage()">
+              {{ muestraImagen ? "Ocultar Imagenes" : "Mostrar imagenes"}}
+            </button>
           </th>
           <th>Marca</th>
           <th>Modelo</th>
@@ -34,7 +36,25 @@
         </tr>
       </thead>
       <tbody>
-        Cuerpo de la tabla
+        <tr *ngFor="let auto of listaAutos">
+
+          <td>
+            <p>
+              <img [src]="auto.imagenUrl"
+                [style.width.px]="anchoImagen"
+                [style.margin.px]="margenImagen"
+                *ngIf="muestraImagen"
+                />
+            </p>
+          </td>
+          <td>{{ auto.marca }}</td>
+          <td>{{ auto.modelo | lowercase }}</td>
+          <td>{{ auto.anio }}</td>
+          <td>{{ auto.color }}</td>
+          <td>{{ auto.kilometros | number }}</td>
+          <td>{{ auto.precio | currency }}</td>
+          <td>{{ auto.calificacion }}</td>
+        </tr>
       </tbody>
     </div>
   </div>
