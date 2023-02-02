@@ -1,58 +1,81 @@
-import { Component } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
+import { Auto } from 'src/app/datos/auto'
 
-interface Auto {
-  imagenUrl: string,
-  marca: string,
-  modelo: string,
-  anio: number,
-  color: string,
-  kilometros: number,
-  precio: string,
-  calificacion: number
-}
 @Component({
   selector: "lista-autos",
-  templateUrl: "./lista-autos.component.html"
+  templateUrl: "./lista-autos.component.html",
+  styleUrls: ['./lista-autos.component.css']
 })
-
-export class ListaAutosComponent {
+export class ListaAutosComponent implements OnInit {
 
   tituloListaAutos: string = "Lista de Automóviles";
-
   arregloAutos: string[] = [""];
-  listaAutos: Auto[] = [];
-  muestraImagen: boolean = false;
-  filtro: string = "";
-  anchoImagen = 120;
-  margenImagen = 3;
+  filteredArrayAutos: Auto[] = [];
+
+  arrayAutos: Auto[] = [];
+  showImage: boolean = false;
+  imageWidth = 200;
+  imageMargin = 3;
+
+  private _filter: string = "";
+  get filter():string {
+    return this._filter;
+  }
+  set filter(filterBy: string) {
+    filterBy = filterBy.toLowerCase();
+    this.filteredArrayAutos = this.arrayAutos.filter(
+      (auto: Auto) => auto.marca.toLocaleLowerCase().includes(filterBy)
+    )
+  }
 
   ngOnInit(): void {
-    this.listaAutos = [
+    this.arrayAutos = [
       {
-        imagenUrl: "../../../../src/assets/imagenAutos/McLaren765ltSpider.png",
+        imageUrl: "assets/imagenAutos/McLaren765ltSpider.png",
         marca: "McLaren",
         modelo: "765LT Spider",
         anio: 2020,
         color: "Azul",
         kilometros: 25000,
-        precio: "200.000.000",
+        precio: 200000000,
         calificacion: 4
       },
       {
-        imagenUrl: "../../../../src/assets/imagenAutos/McLaren765ltSpider.png",
+        imageUrl: "assets/imagenAutos/McLaren765ltSpider.png",
         marca: "Ferrari",
-        modelo: "Ari",
+        modelo: "F-ER23",
         anio: 1990,
         color: "Rojo",
         kilometros: 50000,
-        precio: "10.000.000",
+        precio: 10000000,
         calificacion: 3
+      },
+      {
+        imageUrl: "assets/imagenAutos/McLaren765ltSpider.png",
+        marca: "Honda",
+        modelo: "H-223",
+        anio: 2020,
+        color: "Azul",
+        kilometros: 25000,
+        precio: 200000000,
+        calificacion: 4
+      },
+      {
+        imageUrl: "assets/imagenAutos/McLaren765ltSpider.png",
+        marca: "Mercedes",
+        modelo: "Hilf-PH432",
+        anio: 1990,
+        color: "Rojo",
+        kilometros: 50000,
+        precio: 10000000,
+        calificacion: 7
       }
     ]
+    this.filteredArrayAutos = this.arrayAutos
   }
 
   toggleImage(): void {
-    this.muestraImagen = !this.muestraImagen;
+    this.showImage = !this.showImage;
   }
 }
 

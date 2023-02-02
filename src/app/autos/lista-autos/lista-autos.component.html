@@ -8,7 +8,7 @@
         <label>Filtrar por:</label>
       </div>
       <div class="col-md-4">
-        <input type="text" [(ngModel)]="filtro" />
+        <input type="text" [(ngModel)]="filter" />
       </div>
     </div>
     <div class="row">
@@ -17,13 +17,12 @@
       </div>
     </div>
   </div>
-  <div class="table-responsive" *ngIf="arregloAutos.length > 0">
-    <div class="tabla">
+  <table class="table" *ngIf="arregloAutos.length > 0">
       <thead>
         <tr>
           <th>
             <button class="btn btn-primary" (click)="toggleImage()">
-              {{ muestraImagen ? "Ocultar Imagenes" : "Mostrar imagenes"}}
+              {{ showImage ? "Ocultar Imagenes" : "Mostrar imagenes"}}
             </button>
           </th>
           <th>Marca</th>
@@ -36,19 +35,20 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let auto of listaAutos">
-
+        <tr *ngFor="let auto of filteredArrayAutos">
           <td>
-            <p>
-              <img [src]="auto.imagenUrl"
-                [style.width.px]="anchoImagen"
-                [style.margin.px]="margenImagen"
-                *ngIf="muestraImagen"
+            <p *ngIf="showImage">
+              <img
+                alt="Auto"
+                src={{auto.imageUrl}}
+                [style.width.px]="imageWidth"
+                [style.margin.px]="imageMargin"
+
                 />
             </p>
           </td>
           <td>{{ auto.marca }}</td>
-          <td>{{ auto.modelo | lowercase }}</td>
+          <td>{{ auto.modelo | lowercase | aEspacio:"-"}}</td>
           <td>{{ auto.anio }}</td>
           <td>{{ auto.color }}</td>
           <td>{{ auto.kilometros | number }}</td>
@@ -56,7 +56,6 @@
           <td>{{ auto.calificacion }}</td>
         </tr>
       </tbody>
-    </div>
-  </div>
+  </table>
 </div>
 
