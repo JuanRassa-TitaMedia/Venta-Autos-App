@@ -53,9 +53,15 @@
           <td>{{ auto.color }}</td>
           <td>{{ auto.kilometros | number }}</td>
           <td>{{ auto.precio | currency }}</td>
-          <td>{{ auto.calificacion }}</td>
+          <!-- <td>{{ auto.calificacion }}</td> -->
+          <td>
+            <estrellas
+              [calificacion]="auto.calificacion"
+              (starsClick)="onClickCalificacion($event)"
+            >
+            </estrellas>
+          </td>
         </tr>
       </tbody>
   </table>
 </div>
-

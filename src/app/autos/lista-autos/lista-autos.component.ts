@@ -1,4 +1,5 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnChanges, OnInit, SimpleChanges } from "@angular/core";
+import { faStar } from "@fortawesome/free-solid-svg-icons";
 import { Auto } from 'src/app/datos/auto'
 
 @Component({
@@ -7,6 +8,8 @@ import { Auto } from 'src/app/datos/auto'
   styleUrls: ['./lista-autos.component.css']
 })
 export class ListaAutosComponent implements OnInit {
+
+  faStar = faStar;
 
   tituloListaAutos: string = "Lista de Automóviles";
   arregloAutos: string[] = [""];
@@ -58,7 +61,7 @@ export class ListaAutosComponent implements OnInit {
         color: "Azul",
         kilometros: 25000,
         precio: 200000000,
-        calificacion: 4
+        calificacion: 2
       },
       {
         imageUrl: "assets/imagenAutos/McLaren765ltSpider.png",
@@ -68,7 +71,7 @@ export class ListaAutosComponent implements OnInit {
         color: "Rojo",
         kilometros: 50000,
         precio: 10000000,
-        calificacion: 7
+        calificacion: 2
       }
     ]
     this.filteredArrayAutos = this.arrayAutos
@@ -76,6 +79,10 @@ export class ListaAutosComponent implements OnInit {
 
   toggleImage(): void {
     this.showImage = !this.showImage;
+  }
+
+  onClickCalificacion(mensaje: string): void {
+    alert("Dieron click en la calificación: " + mensaje)
   }
 }
 

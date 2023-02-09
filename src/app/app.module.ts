@@ -6,15 +6,20 @@ import { AppComponent } from './app.component';
 import { ListaAutosComponent } from './autos/lista-autos/lista-autos.component';
 import { AEspacioPipe } from './shared/a-espacio.pipe';
 
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { EstrellasComponent } from './shared/estrellas/estrellas.component';
+
 @NgModule({
   declarations: [
     AppComponent,
     ListaAutosComponent,
-    AEspacioPipe
+    AEspacioPipe,
+    EstrellasComponent
   ],
   imports: [
     BrowserModule,
-    FormsModule
+    FormsModule,
+    FontAwesomeModule
   ],
   providers: [],
   bootstrap: [AppComponent]
