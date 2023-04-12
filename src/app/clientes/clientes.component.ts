@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 export class ClientesComponent implements OnInit{
   tituloPagina: string = "Registro del Cliente";
   cliente = { nombre: "", password: "", telefono: "", email: ""};
-  quiereContacto = { false: false, true: true }
+  quiereContacto = false;
 
   constructor(private _router: Router,) { }
 

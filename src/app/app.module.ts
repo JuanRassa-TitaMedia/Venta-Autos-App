@@ -11,6 +11,7 @@ import { EstrellasComponent } from './shared/estrellas/estrellas.component';
 import { ClientesComponent } from './clientes/clientes.component';
 import { RouterModule } from '@angular/router';
 import { InicioComponent } from './inicio/inicio.component';
+import { DetalleAutosComponent } from './autos/detalle-autos/detalle-autos.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { InicioComponent } from './inicio/inicio.component';
     ListaAutosComponent,
     AEspacioPipe,
     EstrellasComponent,
-    ClientesComponent
+    ClientesComponent,
+    DetalleAutosComponent
   ],
   imports: [
     BrowserModule,
@@ -26,7 +28,7 @@ import { InicioComponent } from './inicio/inicio.component';
     FontAwesomeModule,
     RouterModule.forRoot([
       { path: "autos", component: ListaAutosComponent },
-      { path: "autos/:id", component: ListaAutosComponent },
+      { path: "autos/:id", component: DetalleAutosComponent },
       { path: "inicio", component: InicioComponent },
       { path: "clientes", component: ClientesComponent },
       { path: "inicio", component: ClientesComponent },

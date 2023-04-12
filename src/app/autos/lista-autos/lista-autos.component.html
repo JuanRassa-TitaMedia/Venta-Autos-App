@@ -43,17 +43,15 @@
                 src={{auto.imageUrl}}
                 [style.width.px]="imageWidth"
                 [style.margin.px]="imageMargin"
-
-                />
+              />
             </p>
           </td>
           <td>{{ auto.marca }}</td>
-          <td>{{ auto.modelo | lowercase | aEspacio:"-"}}</td>
+          <td><a [routerLink]="['/autos/', auto.id]">{{ auto.modelo | lowercase | aEspacio:"-"}}</a></td>
           <td>{{ auto.anio }}</td>
           <td>{{ auto.color }}</td>
           <td>{{ auto.kilometros | number }}</td>
           <td>{{ auto.precio | currency }}</td>
-          <!-- <td>{{ auto.calificacion }}</td> -->
           <td>
             <estrellas
               [calificacion]="auto.calificacion"

@@ -1,0 +1,23 @@
+label {
+  font-size: large;
+  font-weight: bold;
+}
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.detalle {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  position: relative;
+}
+button.btn-outline-primary {
+  float: right;
+}
+div.row {
+  padding: 40px 0;
+}
+p {
+  margin: 0;
+}
